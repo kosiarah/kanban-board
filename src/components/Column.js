@@ -35,7 +35,7 @@ function Column({ status, tasks, onAdd, onDelete, onMove, onEdit }) {
       <div className="column-header" style={{ borderTopColor: accent }}>
         <div className="column-title-row">
           <h2 className="column-title">{label}</h2>
-          <span className="column-count">{tasks.length}</span>
+          <span className="column-count" style={{ background: accent + '22', color: accent }}>{tasks.length}</span>
         </div>
       </div>
       <div className="task-list">
@@ -46,13 +46,14 @@ function Column({ status, tasks, onAdd, onDelete, onMove, onEdit }) {
               className="task-card"
               key={task.id}
               draggable
+              style={{ borderLeftColor: p.color }}
               onDragStart={e => {
                 e.dataTransfer.setData('taskId', task.id);
                 e.dataTransfer.setData('fromStatus', status);
               }}
             >
               <div className="task-card-top">
-                <span className="priority-badge" style={{ color: p.color, borderColor: p.color }}>
+                <span className="priority-badge" style={{ color: p.color, background: p.color + '20' }}>
                   {p.label}
                 </span>
                 <div className="task-actions">

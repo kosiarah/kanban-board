@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from './supabaseClient';
+import { COLUMN_CONFIG } from './constants';
 import Column from './components/Column';
 import TaskModal from './components/TaskModal';
 import './App.css';
@@ -75,7 +76,7 @@ function App() {
           <div className="header-stats">
             {COLUMNS.map(col => (
               <div className="stat" key={col}>
-                <span className="stat-num">{tasks.filter(t => t.status === col).length}</span>
+                <span className="stat-num" style={{ color: COLUMN_CONFIG[col].accent }}>{tasks.filter(t => t.status === col).length}</span>
                 <span className="stat-label">{col === 'inprogress' ? 'In Progress' : col.charAt(0).toUpperCase() + col.slice(1)}</span>
               </div>
             ))}
