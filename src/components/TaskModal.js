@@ -4,7 +4,7 @@ import { PRIORITY_CONFIG } from '../constants';
 function TaskModal({ mode, task, onSave, onClose }) {
   const [title, setTitle] = useState(task?.title || '');
   const [notes, setNotes] = useState(task?.notes || '');
-  const [priority, setPriority] = useState(task?.priority || 2);
+  const [priority, setPriority] = useState(task?.priority ?? 2);
 
   function handleSubmit(e) {
     e.preventDefault();

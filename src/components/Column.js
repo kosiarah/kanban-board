@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { COLUMN_CONFIG, PRIORITY_CONFIG } from '../constants';
 
 function Column({ status, tasks, onAdd, onDelete, onMove, onEdit }) {
   const { label, accent } = COLUMN_CONFIG[status];
-  const sorted = [...tasks].sort((a, b) => a.priority - b.priority);
+  const sorted = useMemo(() => [...tasks].sort((a, b) => a.priority - b.priority), [tasks]);
   const [dragOver, setDragOver] = useState(false);
 
   function handleDragOver(e) {
