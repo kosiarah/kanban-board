@@ -17,6 +17,7 @@ function App() {
 
   async function fetchTasks() {
     setLoading(true);
+    setError(null);
     const { data, error } = await supabase
       .from('tasks').select('*').order('priority');
     if (error) setError('Failed to load tasks.');
